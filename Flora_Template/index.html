@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link
+    href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+    rel="stylesheet">
+  <title>Flora</title>
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      color: #e3e3e3;
+      font-family: 'Lato', 'lato-bold';
+      overflow: hidden;
+    }
+
+    .main {
+      height: 100%;
+      width: 100%;
+      line-height: 1.2;
+      position: relative;
+    }
+
+    .container {
+      width: 50%;
+      height: 100%;
+      display: inline-block;
+      position: relative;
+    }
+
+    .left-section {
+      float: left;
+      background-color: #133346;
+    }
+
+    .right-section {
+      float: none;
+      background-color: #de5b38;
+    }
+
+    .img-logo {
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      width: auto;
+      height: auto;
+      max-width: 250px;
+      max-height: 250px;
+      z-index: 10;
+      transform: translate(-50%, -30%);
+    }
+
+    .message {
+      width: 100%;
+      font-size: 18px;
+      margin-top: 12px;
+      position: absolute;
+      top: calc(30% + 190px);
+    }
+
+    .left-section .message {
+      text-align: right;
+    }
+
+    .right-section .message {
+      text-align: left;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="main">
+    <img class="img-logo" src="assets/logo.png" alt="flora_logo">
+    <div class="container left-section">
+      <p class="message">Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+    </div>
+    <div class="container right-section">
+      <p class="message">Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+    </div>
+  </main>
+
+  <script>
+  </script>
+</body>
+
+</html>

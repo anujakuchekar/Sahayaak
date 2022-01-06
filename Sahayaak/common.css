@@ -1,0 +1,49 @@
+/* Lato font */
+
+@font-face {
+  font-family: 'lato-regular';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/lato/v16/S6uyw4BMUTPHjx4wXg.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'lato-bold';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/lato/v16/S6u9w4BMUTPHh6UVSwiPGQ.woff2) format('woff2');
+}
+
+/* For Google Chrome */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgba(148, 148, 148, 0.38);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb, ::-webkit-scrollbar-thumb:horizontal {
+  background-color: #2590ed;
+  border-radius: 10px;
+}
+
+.scroll {
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-color: #2590ed rgba(148, 148, 148, 0.38);
+  scrollbar-width: thin;
+}
+
+.h-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-color: #2590ed rgba(148, 148, 148, 0.38);
+  scrollbar-width: thin;
+  white-space: nowrap;
+}

@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link
+    href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+    rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="common.css" />
+  <title>Document</title>
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      background-color: #ffffff;
+      color: #e3e3e3;
+      font-family: 'Lato', sans-serif;
+      overflow: hidden;
+    }
+
+    .main-page {
+      width: 80%;
+      margin: 0 auto;
+      line-height: 1.2;
+      padding-top: 100px;
+    }
+
+    .slide-wrapper {
+      position: relative;
+      /* padding-top: 56.25%; */
+      min-height: 460px;
+    }
+
+    .full-page {
+      height: 100%;
+      width: 100%;
+      color: #2b2b2b;
+      scroll-behavior: smooth;
+      background-color: white;
+      position: relative;
+    }
+
+    .header {
+      height: 100px;
+      /* padding: 20px 0; */
+      position: fixed;
+      box-sizing: border-box;
+      background: rgb(255 255 255 / 0.95);
+      width: 100%;
+      z-index: 100;
+      box-shadow: 2px 2px 12px 0 rgba(0, 0, 0, 0.25);
+    }
+
+    .header-page {
+      width: 85%;
+      margin: 0 auto;
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-wrapper,
+    .logo-text-wrapper,
+    .logo-mobile {
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+      margin: 0;
+      position: relative;
+      display: inline-block;
+      background-image: url(assets/sahayak_app_store_logo.png);
+      height: 100px;
+      width: 100px;
+      cursor: pointer;
+    }
+
+    .logo-text-wrapper {
+      background-image: url(assets/SAHAYAAK.png);
+      width: 150px;
+    }
+
+    .logo-mobile {
+      background-image: url(assets/logo_with_name.png);
+      height: 90px;
+      width: 90px;
+    }
+
+    .btn {
+      background-color: #2590ed;
+      border: none;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      box-sizing: border-box;
+      margin-right: 12px;
+      border-radius: 6px;
+      outline: none;
+      min-width: 82px;
+      vertical-align: middle;
+      height: 48px;
+      font-weight: 600;
+      letter-spacing: .02em;
+    }
+
+    .profile-details {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    /* Slideshow container */
+    .slide-container {
+      max-height: 70vh;
+    }
+
+    .slideshow-container {
+      position: relative;
+      margin: auto;
+    }
+
+    .active {
+      background-color: #717171;
+    }
+
+    /* Fading animation */
+    .fade {
+      -webkit-animation-name: fade;
+      -webkit-animation-duration: 1.5s;
+      animation-name: fade;
+      animation-duration: 1.5s;
+    }
+
+    .inner-card {
+      box-sizing: border-box;
+      width: 90%;
+      margin: 0 auto;
+    }
+
+    .content-card-wrapper {
+      display: block;
+      padding: 40px 0;
+      min-height: 520px;
+      display: flex;
+      align-items: center;
+    }
+
+    .paragraph {
+      letter-spacing: 1;
+      padding: 0 12px;
+      box-sizing: border-box;
+      line-height: 1.4;
+      font-size: 20px;
+    }
+
+    .card-heading .card-heading-label {
+      padding-bottom: 8px;
+      display: inline-block;
+      padding-right: 40px;
+      font-size: 48px;
+    }
+
+    .content-card-wrapper .paragraph {
+      padding-left: 0;
+      width: 75%;
+    }
+
+    .card-heading {
+      position: relative;
+    }
+
+    .card-detail-wrapper {
+      margin-left: 50px;
+      width: calc(55% - 60px);
+      display: inline-block;
+      vertical-align: top;
+      box-sizing: border-box;
+      padding-left: 16px;
+    }
+
+    .content-card-wrapper.one {
+      background-color: #f4ccd5;
+
+    }
+
+    .content-card-wrapper.two {
+      background-color: #ffeca3;
+    }
+
+    .content-card-wrapper.three {
+      background-color: #d9fbeb;
+    }
+
+    .content-card-wrapper.four {
+      background-color: #ecdeff;
+    }
+
+    .card-image-wrapper .img-thumb {
+      width: 100%;
+      object-fit: contain;
+      position: relative;
+      transition: transform 0.5s ease-in;
+      max-height: 500px;
+    }
+
+    .main-content-wrapper {
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .card-image-wrapper {
+      position: relative;
+      width: 45%;
+      display: inline-block;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .footer,
+    .mobile-footer-wrapper {
+      padding: 16px 15%;
+      box-sizing: border-box;
+      border-top: 1px solid #eee;
+      background: linear-gradient(to left, #071D5E, #EC725E);
+      color: #fff;
+    }
+
+    .footer .footer-heading {
+      margin: 0;
+      font-size: 14px;
+      text-align: center;
+      /* color: #ccc; */
+    }
+
+    .footer-heading-icon {
+      font-size: 14px;
+      width: 14px;
+      height: 14px;
+      margin-right: 4px;
+      /* color: #00000096; */
+    }
+
+    .footer-heading-label {
+      display: inline-block;
+      vertical-align: top;
+      /* color: #00000096; */
+    }
+
+    .about-us-wrapper {
+      position: relative;
+      height: 100%;
+      width: 100%;
+      min-height: 560px;
+      background-image: url(assets/image.png);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .about-us-wrapper .inner-card {
+      width: 80%;
+      overflow: auto;
+      margin: 30px auto;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      text-align: center;
+    }
+
+    .display-flex {
+      display: flex;
+      align-items: center;
+    }
+
+    .display-reverse-flex {
+      display: flex;
+      align-items: center;
+      flex-direction: row-reverse;
+    }
+
+    .about-us-wrapper .card-heading-label {
+      color: #071D5E;
+    }
+
+    .one .card-heading {
+      color: #d84e6d;
+    }
+
+    .two .card-heading {
+      color: #fcb704;
+    }
+
+    .three .card-heading {
+      color: #557F75;
+    }
+
+    .four .card-heading {
+      color: #7a49a5;
+    }
+
+    .android-download-btn {
+      width: 140px;
+      /* height: 46px; */
+      border-radius: 100px;
+      /* background: linear-gradient(to left, #071D5E, #EC725E); */
+      color: #fff;
+      font-size: 15px;
+      /* line-height: 32px; */
+      text-align: center;
+      display: inline-block;
+      padding: 9px 15px;
+      border: 0;
+      text-decoration: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      background-color: #000;
+    }
+
+    .logo {
+      display: inline-block;
+      height: 25px;
+      width: 25px;
+      margin-right: 6px;
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-image: url(assets/google-play-logo.png);
+    }
+
+    .name {
+      padding: 0;
+      margin: 0;
+      display: inline-block;
+    }
+
+    .name span {
+      display: block;
+      font-weight: 700;
+      padding: 3px 0 0;
+    }
+
+    .left-section {
+      width: 46%;
+    }
+
+    .right-section {
+      width: 54%;
+      display: flex;
+      flex-direction: row-reverse;
+    }
+
+    .contact-wrapper {
+      display: flex;
+      align-items: center;
+    }
+
+    .mobile-contact-wrapper span:nth-child(2) {
+      border-right: 1px solid #000;
+      margin-right: 6px;
+    }
+
+    .contact-wrapper span:nth-child(even) {
+      border-right: 1px solid #000;
+      margin-right: 16px;
+      line-height: 24px;
+    }
+
+    .mobile-contact-wrapper span,
+    .contact-wrapper span {
+      padding-right: 4px;
+    }
+
+    .display-none {
+      display: none !important;
+    }
+
+    .social-media-sidebar {
+      position: fixed;
+      right: 0;
+      top: calc(50% + 50px);
+      padding: 0 8px;
+      transform: translateY(-50%);
+      /* box-shadow: 2px 2px 12px 0 rgba(0, 0, 0, 0.25);
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px; */
+    }
+
+    .social-media-sidebar .link-wrapper {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .social-media-sidebar .link {
+      padding: 6px;
+      transition: all 0.3s ease-in-out;
+      border-radius: 50%;
+      margin-bottom: 4px;
+      height: 52px;
+      width: 52px;
+      box-sizing: border-box;
+    }
+
+    .social-media-sidebar .link:hover {
+      background-color: #e3e3e3;
+      box-shadow: 0 0 2px 2px #bfbfbf;
+    }
+
+    .footer-icon {
+      height: 40px;
+      width: 40px;
+      position: relative;
+      box-sizing: border-box;
+    }
+
+    .link-wrapper {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .link {
+      display: inline-block;
+    }
+
+    .link.facebook .footer-icon {
+      padding: 6px;
+    }
+
+    .link.instagram .footer-icon {
+      padding: 2px;
+    }
+
+    .logo-mobile,
+    .mobile-footer,
+    .mobile-contact-wrapper {
+      display: none;
+    }
+
+    @media only screen and (max-width: 756px) {
+      .card-image-wrapper {
+        width: 100%;
+      }
+
+      .card-detail-wrapper {
+        margin-top: 50px;
+        width: calc(100% - 42px);
+        margin-left: 40px;
+      }
+
+      .paragraph {
+        font-size: 16px;
+      }
+
+      .about-us-wrapper {
+        min-height: 1020px;
+      }
+
+      .mobile-footer {
+        display: block;
+      }
+
+      .footer,
+      .contact-wrapper,
+      .logo-wrapper,
+      .logo-text-wrapper {
+        display: none;
+      }
+
+      .left-section {
+        width: 40%;
+      }
+
+      .right-section {
+        width: 60%;
+      }
+
+      .card-heading .card-heading-label {
+        font-size: 24px;
+      }
+
+      .mobile-footer-wrapper {
+        padding: 16px;
+        text-align: center;
+      }
+
+      .mobile-contact-wrapper {
+        display: flex;
+        padding: 6px 12px;
+        font-size: 15px;
+        border-top: 1px solid #eee;
+        align-items: center;
+      }
+
+      .logo-mobile {
+        display: block;
+      }
+    }
+
+    @media only screen and (max-width: 1024px) and (min-width: 758px) {
+      .content-card-wrapper {
+        /* margin-bottom: 40px; */
+        height: 140px;
+      }
+
+      .paragraph {
+        font-size: 14px;
+      }
+
+      .card-heading {
+        font-size: 0.8em;
+      }
+
+      .logo-mobile {
+        display: block;
+      }
+
+      .logo-wrapper,
+      .logo-text-wrapper {
+        display: none;
+      }
+
+      .left-section {
+        width: 90px;
+      }
+
+      .right-section {
+        width: calc(100% - 90px);
+      }
+    }
+
+    .content-card-wrapper:last-child {
+      margin-bottom: 0;
+      padding-bottom: 80px;
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <div class="full-page scroll">
+    <header class="header">
+      <div class="header-page">
+        <div class="left-section">
+          <div href="/index.html#home" class="logo-wrapper"></div>
+          <div href="/index.html#home1" class="logo-text-wrapper"></div>
+          <div href="/index.html#home1" class="logo-mobile"></div>
+        </div>
+        <div class="right-section">
+          <div class="android-download-btn" title="Download Android App">
+            <div class="logo"></div>
+            <p class="name">Android app on <span>GOOGLE PLAY</span></p>
+          </div>
+          <div class="contact-wrapper">
+            <span class="material-icons">phone</span> <span>+91 70208 27956</span>
+            <span class="material-icons">email</span> <span>info@floratechno.in</span>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main class="main-page">
+      <!-- <div id="home" class="slideshow-container">
+        <div class="mySlides fade">
+          <img src="assets/You make a difference and we make it easier.JPEG" style="width:100%">
+        </div>
+        <div class="mySlides fade">
+          <img
+            src="assets/A mobile app that lets you help fight hunger by showing where food or groceries are needed!.png"
+            style="width:100%">
+        </div>
+        <div class="mySlides fade">
+          <img
+            src="assets/A mobile app that lets you help fight hunger by showing where food or groceries are needed! (1).png"
+            style="width:100%">
+        </div>
+      </div> -->
+
+      <div id="home" class="slide-container">
+        <img
+          src="assets/coverpage.png"
+          style="width:100%">
+      </div>
+
+      <div class="about-us-wrapper">
+        <div class="inner-card">
+          <h1 class="card-heading-label">Who are we?</h1>
+          <p class="paragraph">We are bunch of crazy innovators, mind sharing a common passion towards technology; who
+            wanted to be the helping hand in our own little possible way, when our country was suffering and struggling
+            in this pandemic situation. We decided to use our strength our holding on the technology to build something,
+            to help those who we identified needed us the most during this challenging time “the worker class” , “ the
+            people on street”, “the hawkers” who are trying to make end meets to survive in this tough time.</p>
+
+          <!-- <p class="paragraph">The idea first approached us to build this application when we heard that a worker
+            suicide because he couldn’t feed his family or when we saw people walking miles on foot to reach their home as they had nothing
+            left in cities for them. That got us thinking when corporates have joined hand and making donations,
+            government is helping, there are food camps, volunteers on roads and many more ready to help. Why even than
+            those under privileged are suffering, sleeping empty stomach and die of hunger.</p>
+
+          <p class="paragraph">Our talk with few volunteers made us realized a major gap.</p>
+
+          <p class="paragraph">The volunteers going places to help; people providing donations, but it was not reaching
+            the maximum people, as many times volunteers don’t get a real idea where there is an actual need or at occasions there are 10
+            volunteers covering the same area making the covered area small. We wanted to fill this gap by allowing
+            people to place request where their e is need and volunteers an easy access and clear location to go to.</p> -->
+
+          <p class="paragraph">Building on this thought we are presenting you “Helping Hand” an application which bridge
+            this gap. Our mission is simple “Make the food available to the right people at the right time and at right
+            place so no
+            one sleeps hungry”.</p>
+
+          <p class="paragraph">As our honourable Prime Minister said “कोरोना वायरस के खिलाफ लड़ाई लंबी है, इसलिए ना थकना
+            है और ना ही हारना
+            है सिर्फ जीतना है”</p>
+
+          <p class="paragraph">This is our small contribution to our nation.</p>
+        </div>
+      </div>
+
+      <div class="main-content-wrapper">
+        <div class="content-card-wrapper one">
+          <div class="inner-card display-flex">
+            <div class="card-image-wrapper"> <img class="img-thumb" src="assets/seeking_help_solid_hand.png"
+                alt="card-img"> </div>
+            <div class="card-detail-wrapper">
+              <div class="card-heading">
+                <h2> <span class="card-heading-label">Seeking Help?</span>
+                </h2>
+              </div>
+              <p class="paragraph"> Just select your location and place a request.</p>
+            </div>
+          </div>
+        </div>
+        <div class="content-card-wrapper two">
+          <div class="inner-card display-reverse-flex">
+            <div class="card-image-wrapper"> <img class="img-thumb" src="assets/stay_updated_status.png" alt="card-img">
+            </div>
+            <div class="card-detail-wrapper">
+              <div class="card-heading">
+                <h2> <span class="card-heading-label">Stay updated</span>
+              </div>
+              <p class="paragraph">You can checkthe status of your requests and connect with your helping hand if
+                requires.</p>
+            </div>
+          </div>
+        </div>
+        <div class="content-card-wrapper three">
+          <div class="inner-card display-flex">
+            <div class="card-image-wrapper"> <img class="img-thumb" src="assets/hand_with_heart_ready_to_help.png"
+                alt="card-img"> </div>
+            <div class="card-detail-wrapper">
+              <div class="card-heading">
+                <h2> <span class="card-heading-label">Ready to help?</span>
+                </h2>
+              </div>
+              <p class="paragraph"> See requests near your, and provide whatever help you can.</p>
+            </div>
+          </div>
+        </div>
+        <div class="content-card-wrapper four">
+          <div class="inner-card display-reverse-flex">
+            <div class="card-image-wrapper"> <img class="img-thumb" src="assets/check_nearby_requests.png"
+                alt="card-img"> </div>
+            <div class="card-detail-wrapper">
+              <div class="card-heading">
+                <h2> <span class="card-heading-label">Check nearby requests</span>
+                </h2>
+              </div>
+              <p class="paragraph">You can see the people seeking requests near your location and connect with them if
+                required.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="footer">
+      <p class="footer-heading"> <i class="material-icons footer-heading-icon">copyright</i>
+        <span class="footer-heading-label">2020 by Floratechno Solutions Pvt Ltd</span> </p>
+    </footer>
+    <footer class="mobile-footer">
+      <div class="mobile-contact-wrapper">
+        <span class="material-icons">phone</span> <span>+91 70208 27956</span>
+        <span class="material-icons">email</span> <span>info@floratechno.in</span>
+      </div>
+      <footer class="mobile-footer-wrapper">
+        <p class="footer-heading"> <i class="material-icons footer-heading-icon">copyright</i>
+          <span class="footer-heading-label">2020 by Floratechno Solutions Pvt Ltd</span> </p>
+      </footer>
+    </footer>
+    <div class="social-media-sidebar">
+      <div class="link-wrapper"> <a class="link facebook" href="#" title="facebook" target="_blank"> <img
+            class="footer-icon" src="assets/facebook-color.png" alt="facebook"> </a> <a class="link twitter" href="#"
+          title="twitter" target="_blank"> <img class="footer-icon" src="assets/twitter.png" alt="twitter">
+        </a> <a class="link youtube" href="#" title="youtube" target="_blank"> <img class="footer-icon"
+            src="assets/youtube-color.png" alt="twitter"> </a> <a class="link instagram" href="#" title="instagram"
+          target="_blank"> <img class="footer-icon" src="assets/instagram-color.png" alt="twitter"> </a> </div>
+    </div>
+  </div>
+
+  <script>
+    var slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+      var i;
+      var slides = document.getElementsByClassName("mySlides");
+      var dots = document.getElementsByClassName("dot");
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      slideIndex++;
+      if (slideIndex > slides.length) { slideIndex = 1 }
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[slideIndex - 1].style.display = "block";
+      dots[slideIndex - 1].className += " active";
+      setTimeout(showSlides, 2000); // Change image every 2 seconds
+    }
+  </script>
+</body>
+
+</html>
